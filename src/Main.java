@@ -272,6 +272,38 @@ public class Main {
             }
         }
 
+
+        System.out.println("Задание 5.1");
+        System.out.println("Сколько чисел вы хотите ввести?");
+        int count = in.nextInt();
+        List<Num> numbers = new ArrayList<>();
+
+        for (int i = 0; i < count; i++) {
+            System.out.println("Введите " + (i + 1) + " число (целое, десятичная дробь(нпр, 1.2), обыкновенная дробь(нпр, 1/2)):");
+            String numb = in.next();
+            try {
+                if (numb.contains("/")) {
+                    String[] parts = numb.split("/");
+                    int numerator = Integer.parseInt(parts[0]);
+                    int denominator = Integer.parseInt(parts[1]);
+                    numbers.add(new FracNum(numerator, denominator));
+                } else if (numb.contains(".")) {
+                    double value = Double.parseDouble(numb);
+                    numbers.add(new DoubNum(value));
+                } else {
+                    int value = Integer.parseInt(numb);
+                    numbers.add(new IntNum(value));
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Ошибка: Некорректный формат числа. Попробуйте снова.");
+                i--; // Уменьшаем счетчик, чтобы повторить ввод для этого числа
+            }
+        }
+
+        // Создание объекта Addition и вычисление суммы
+        Addition addition = new Addition(numbers);
+        System.out.println("Сумма введенных чисел: " + addition.summa());
+
         in.close();
     }
 }
