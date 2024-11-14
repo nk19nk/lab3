@@ -4,9 +4,11 @@ public class DoubNum implements Num {
     DoubNum(double value) {
         this.value = value;
     }
-
+    public String toString() {
+        return String.valueOf(value);
+    }
     @Override
     public double doubleValue() {
-        return value;
+        return (double) value;
     }
 }

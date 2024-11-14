@@ -4,7 +4,9 @@ public class IntNum implements Num {
     IntNum(int value) {
         this.value = value;
     }
-
+    public String toString() {
+        return String.valueOf(value);
+    }
     @Override
     public double doubleValue() {
         return value;

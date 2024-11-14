@@ -1,17 +1,25 @@
 public class FracNum implements Num {
-    private final int numerator;
-    private final int denominator;
+    private final int chisl;
+    private final int znam;
 
-    FracNum (int numerator, int denominator) {
-        if (denominator == 0) {
+    FracNum(int chisl, int znam) {
+        if (znam==0) {
             throw new IllegalArgumentException("Знаменатель не может быть равен нулю");
         }
-        this.numerator = numerator;
-        this.denominator = denominator;
+        if (znam<0) {
+            this.chisl=-chisl;
+            this.znam=-znam;
+        }else {
+            this.chisl = chisl;
+            this.znam = znam;
+        }
     }
-
+    public String toString() {
+        return chisl+"/"+znam;
+    }
     @Override
     public double doubleValue() {
-        return (double) numerator / denominator;
+        return (double) chisl / znam;
     }
+
 }
