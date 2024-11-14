@@ -1,14 +1,16 @@
 import java.util.List;
+import java.util.SequencedCollection;
 
 public class Addition {
     private List<Num> numbers;
 
-    public List<Num> getNumbers() {
-        return numbers;
+    List<Num> getNumbers() {
+        return this.numbers;
     }
 
-    public void setNumbers(List<Num> numbers) {
+    List<Num> setNumbers(List<Num> numbers) {
         this.numbers = numbers;
+        return this.numbers;
     }
 
     Addition(List<Num> numbers) {
