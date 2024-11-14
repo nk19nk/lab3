@@ -2,9 +2,15 @@ public final class Fraction4 extends Number {
     // Поля
     private final int chisl;
     private final int znam;
-
+    //свойства
+    int getChisl() {
+        return this.chisl;
+    }
+    int getZnam() {
+        return this.znam;
+    }
     // Конструктор
-    public Fraction4(int chisl, int znam) {
+    Fraction4(int chisl, int znam) {
         if (znam == 0) {
             throw new IllegalArgumentException("Знаменатель не может быть равен нулю");
         }
@@ -16,16 +22,6 @@ public final class Fraction4 extends Number {
             this.znam = znam;
         }
     }
-
-    // Геттеры
-    public int getChisl() {
-        return this.chisl;
-    }
-
-    public int getZnam() {
-        return this.znam;
-    }
-
     // Методы
     @Override
     public String toString() {
