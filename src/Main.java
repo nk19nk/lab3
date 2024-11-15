@@ -6,133 +6,342 @@ public class Main {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
 
-        System.out.println("Задание 1.4");
-        System.out.println("Сколько дробей вы хотите создать?");
-        int col = 0;
+//        System.out.println("Задание 1.4");
+//        System.out.println("Сколько дробей вы хотите создать?");
+//        int col = 0;
+//        while (true) {
+//            if (in.hasNextInt()) {
+//                col = in.nextInt();
+//                if (col <= 0) {
+//                    System.out.println("Количество дробей должно быть положительным числом!");
+//                } else {
+//                    break;
+//                }
+//            } else {
+//                System.out.println("Введите целое число!");
+//                in.next();
+//            }
+//        }
+//        List<Fraction> fractions = new ArrayList<>();
+//        for (int i = 0; i < col; i++) {
+//            System.out.println("Введите " + (i + 1) + " дробь");
+//            System.out.print("числитель: ");
+//            int ch = in.nextInt();
+//            System.out.print("знаменатель: ");
+//            int zn = in.nextInt();
+//            try {
+//                Fraction f = new Fraction(ch, zn);
+//                fractions.add(f);
+//                System.out.println("Введенная дробь: " + f);
+//            } catch (IllegalArgumentException e) {
+//                System.out.println("Ошибка: " + e.getMessage());
+//                i--;
+//            }
+//        }
+//        while (true) {
+//            System.out.println("Выберите операцию:");
+//            System.out.println("Сложение - 1");
+//            System.out.println("Вычитание - 2");
+//            System.out.println("Умножение - 3");
+//            System.out.println("Деление - 4");
+//            System.out.println("Выход - 0");
+//            System.out.print("Введите номер операции: ");
+//            int oper = 0;
+//            while (true) {
+//                if (in.hasNextInt()) {
+//                    oper = in.nextInt();
+//                    if (oper < 0 || oper > 4) {
+//                        System.out.println("Операции с таким номером нет!");
+//                        continue;
+//                    }
+//                    break;
+//                } else {
+//                    System.out.println("Введите целое число!");
+//                    in.next();
+//                }
+//            }
+//
+//            if (oper == 0) {
+//                break;
+//            }
+//            Fraction f1 = null;
+//            Fraction f2 = null;
+//
+//            if (oper >= 1 && oper <= 4) {
+//
+//                System.out.println("Список введенных дробей:");
+//                for (int i = 0; i < fractions.size(); i++) {
+//                    System.out.println((i + 1) + ") " + fractions.get(i));
+//                }
+//
+//                System.out.print("Выберите первую дробь из " + fractions.size() + " дробей(напишите ее номер(1-" + fractions.size() + "):");
+//                int nomer1 = 0;
+//                while (true) {
+//                    if (in.hasNextInt()) {
+//                        nomer1 = in.nextInt() - 1;
+//                        if (nomer1 < 0 || nomer1 >= fractions.size()) {
+//                            System.out.println("Дроби с таким номером нет, введите снова");
+//                            continue;
+//                        }
+//                        break;
+//                    } else {
+//                        System.out.println("Введите целое число!");
+//                        in.next();
+//                    }
+//                }
+//                f1 = fractions.get(nomer1);
+//
+//                System.out.println("Список введенных дробей:");
+//                for (int i = 0; i < fractions.size(); i++) {
+//                    System.out.println((i + 1) + ". " + fractions.get(i));
+//                }
+//
+//                System.out.print("Выберите вторую дробь из " + fractions.size() + " дробей(напишите ее номер(1-" + fractions.size() + "):");
+//                int nomer2 = 0;
+//                while (true) {
+//                    if (in.hasNextInt()) {
+//                        nomer2 = in.nextInt() - 1;
+//                        if (nomer2 < 0 || nomer2 >= fractions.size()) {
+//                            System.out.println("Дроби с таким номером нет, введите снова");
+//                            continue;
+//                        }
+//                        break;
+//                    } else {
+//                        System.out.println("Введите целое число!");
+//                        in.next();
+//                    }
+//                }
+//                f2 = fractions.get(nomer2);
+//            }
+//            switch (oper) {
+//                case 1:
+//                    System.out.println(f1 + " + " + f2 + " = " + f1.sum(f2));
+//                    break;
+//                case 2:
+//                    System.out.println(f1 + " - " + f2 + " = " + f1.minus(f2));
+//                    break;
+//                case 3:
+//                    System.out.println(f1 + " * " + f2 + " = " + f1.multiply(f2));
+//                    break;
+//                case 4:
+//                    try {
+//                        System.out.println(f1 + " / " + f2 + " = " + f1.div(f2));
+//                    } catch (ArithmeticException e) {
+//                        System.out.println("Ошибка: " + e.getMessage());
+//                    }
+//                    break;
+//                default:
+//                    System.out.println("Операции с таким номером нет, введите снова");
+//                    break;
+//            }
+//        }
+
+
+        System.out.println("Задание 1.10");
+        List<City> cities = new ArrayList<>();
         while (true) {
-            if (in.hasNextInt()) {
-                col = in.nextInt();
-                if (col <= 0) {
-                    System.out.println("Количество дробей должно быть положительным числом!");
-                } else {
-                    break;
-                }
-            } else {
-                System.out.println("Введите целое число!");
-                in.next();
-            }
-        }
-        List<Fraction> fractions = new ArrayList<>();
-        for (int i = 0; i < col; i++) {
-            System.out.println("Введите " + (i + 1) + " дробь");
-            System.out.print("числитель: ");
-            int ch = in.nextInt();
-            System.out.print("знаменатель: ");
-            int zn = in.nextInt();
-            try {
-                Fraction f = new Fraction(ch, zn);
-                fractions.add(f);
-                System.out.println("Введенная дробь: " + f);
-            } catch (IllegalArgumentException e) {
-                System.out.println("Ошибка: " + e.getMessage());
-                i--;
-            }
-        }
-        while (true) {
-            System.out.println("Выберите операцию:");
-            System.out.println("Сложение - 1");
-            System.out.println("Вычитание - 2");
-            System.out.println("Умножение - 3");
-            System.out.println("Деление - 4");
-            System.out.println("Выход - 0");
-            System.out.print("Введите номер операции: ");
-            int oper = 0;
+            System.out.println("Добавить город - 1");
+            System.out.println("Добавить дорогу - 2");
+            System.out.println("Удалить дорогу - 3");
+            System.out.println("Показать города и дороги - 4");
+            System.out.println("Выход - 5");
+            System.out.print("Введите номер нужного действия: ");
+
+            int act ;
             while (true) {
                 if (in.hasNextInt()) {
-                    oper = in.nextInt();
-                    if (oper < 0 || oper > 4) {
-                        System.out.println("Операции с таким номером нет!");
-                        continue;
+                    act = in.nextInt();
+                    if (act <= 0 || act >= 6) {
+                        System.out.println("Такого действия нет! Введите число от 1 до 5");
+                    } else {
+                        break;
                     }
-                    break;
                 } else {
-                    System.out.println("Введите целое число!");
+                    System.out.println("Введите целое число от 1 до 5!");
                     in.next();
                 }
             }
 
-            if (oper == 0) {
-                break;
-            }
-            Fraction f1 = null;
-            Fraction f2 = null;
+//            if(act==1){
+//                System.out.println("Введите название города: ");
+//                String cityName = in.nextLine();
+//                try {
+//                    cities.add(new City(cityName));
+//                    System.out.println("Город " + cityName + " добавлен");
+//                } catch (IllegalArgumentException e) {
+//                    System.out.println("Ошибка: " + e.getMessage());
+//                }
+//            } else if(act==2){
+//                if (cities.isEmpty()) {
+//                    System.out.println("Список городов пуст. Сначала добавьте города.");
+//                    break;
+//                }
+//
+//                try {
+//                    System.out.println("Доступные города:");
+//                    for (int i = 0; i < cities.size(); i++) {
+//                        System.out.println((i + 1) + ". " + cities.get(i).getName());
+//                    }
+//                    System.out.print("Выберите номер города отправления: ");
+//                    int fromIndex = in.nextInt() - 1;
+//                    System.out.print("Выберите номер города назначения: ");
+//                    int toIndex = in.nextInt() - 1;
+//                    System.out.print("Введите стоимость дороги: ");
+//                    int cost = in.nextInt();
+//
+//                    if (fromIndex >= 0 && fromIndex < cities.size() && toIndex >= 0 && toIndex < cities.size()) {
+//                        City fromCity = cities.get(fromIndex);
+//                        City toCity = cities.get(toIndex);
+//                        fromCity.addRoute(toCity, cost);
+//                        System.out.println("Дорога добавлена: " + fromCity.getName() + " -> " + toCity.getName() + " за " + cost);
+//                    } else {
+//                        System.out.println("Неверный выбор городов.");
+//                    }
+//                } catch (IllegalArgumentException e) {
+//                    System.out.println("Ошибка: " + e.getMessage());
+//                } catch (Exception e) {
+//                    System.out.println("Некорректный ввод. Попробуйте снова.");
+//                    in.nextLine(); // Очистка буфера
+//                }
+//            } else if (act == 3) {
+//                if (cities.isEmpty()) {
+//                    System.out.println("Список городов пуст. Сначала добавьте города.");
+//                    break;
+//                }
+//
+//                try {
+//                    System.out.println("Доступные города:");
+//                    for (int i = 0; i < cities.size(); i++) {
+//                        System.out.println((i + 1) + ". " + cities.get(i).getName());
+//                    }
+//                    System.out.print("Выберите номер города отправления: ");
+//                    int fromIndex = in.nextInt() - 1;
+//                    System.out.print("Выберите номер города назначения: ");
+//                    int toIndex = in.nextInt() - 1;
+//
+//                    if (fromIndex >= 0 && fromIndex < cities.size() && toIndex >= 0 && toIndex < cities.size()) {
+//                        City fromCity = cities.get(fromIndex);
+//                        City toCity = cities.get(toIndex);
+//                        fromCity.removeRoute(toCity);
+//                        System.out.println("Дорога удалена: " + fromCity.getName() + " -> " + toCity.getName());
+//                    } else {
+//                        System.out.println("Неверный выбор городов.");
+//                    }
+//                } catch (IllegalArgumentException e) {
+//                    System.out.println("Ошибка: " + e.getMessage());
+//                } catch (Exception e) {
+//                    System.out.println("Некорректный ввод. Попробуйте снова.");
+//                    in.nextLine(); // Очистка буфера
+//                }
+//            } else if (act == 4) {
+//                if (cities.isEmpty()) {
+//                    System.out.println("Список городов пуст.");
+//                } else {
+//                    System.out.println("\nСписок городов и дорог:");
+//                    for (City city : cities) {
+//                        System.out.println(city);
+//                    }
+//                }
+//            }
 
-            if (oper >= 1 && oper <= 4) {
-
-                System.out.println("Список введенных дробей:");
-                for (int i = 0; i < fractions.size(); i++) {
-                    System.out.println((i + 1) + ") " + fractions.get(i));
-                }
-
-                System.out.print("Выберите первую дробь из " + fractions.size() + " дробей(напишите ее номер(1-" + fractions.size() + "):");
-                int nomer1 = 0;
-                while (true) {
-                    if (in.hasNextInt()) {
-                        nomer1 = in.nextInt() - 1;
-                        if (nomer1 < 0 || nomer1 >= fractions.size()) {
-                            System.out.println("Дроби с таким номером нет, введите снова");
-                            continue;
-                        }
-                        break;
-                    } else {
-                        System.out.println("Введите целое число!");
-                        in.next();
-                    }
-                }
-                f1 = fractions.get(nomer1);
-
-                System.out.println("Список введенных дробей:");
-                for (int i = 0; i < fractions.size(); i++) {
-                    System.out.println((i + 1) + ". " + fractions.get(i));
-                }
-
-                System.out.print("Выберите вторую дробь из " + fractions.size() + " дробей(напишите ее номер(1-" + fractions.size() + "):");
-                int nomer2 = 0;
-                while (true) {
-                    if (in.hasNextInt()) {
-                        nomer2 = in.nextInt() - 1;
-                        if (nomer2 < 0 || nomer2 >= fractions.size()) {
-                            System.out.println("Дроби с таким номером нет, введите снова");
-                            continue;
-                        }
-                        break;
-                    } else {
-                        System.out.println("Введите целое число!");
-                        in.next();
-                    }
-                }
-                f2 = fractions.get(nomer2);
-            }
-            switch (oper) {
-                case 1:
-                    System.out.println(f1 + " + " + f2 + " = " + f1.sum(f2));
-                    break;
-                case 2:
-                    System.out.println(f1 + " - " + f2 + " = " + f1.minus(f2));
-                    break;
-                case 3:
-                    System.out.println(f1 + " * " + f2 + " = " + f1.multiply(f2));
-                    break;
-                case 4:
+            switch (act) {
+                case 1: // Добавление города
+                    System.out.println("Введите название города: ");
+                    String cityName = in.nextLine();
                     try {
-                        System.out.println(f1 + " / " + f2 + " = " + f1.div(f2));
-                    } catch (ArithmeticException e) {
+                        City city = new City(cityName);
+                        cities.add(city);
+                        System.out.println("Город " + cityName + " добавлен");
+                    } catch (IllegalArgumentException e) {
                         System.out.println("Ошибка: " + e.getMessage());
                     }
                     break;
-                default:
-                    System.out.println("Операции с таким номером нет, введите снова");
+
+                case 2: // Добавление дороги
+                    if (cities.size() < 2) {
+                        System.out.println("Для добавления дороги необходимо иметь хотя бы два города.");
+                        break;
+                    }
+
+                    try {
+                        System.out.println("Доступные города:");
+                        for (int i = 0; i < cities.size(); i++) {
+                            System.out.println((i + 1) + ". " + cities.get(i).getName());
+                        }
+                        System.out.print("Выберите номер города отправления: ");
+                        int fromIndex = in.nextInt() - 1;
+                        System.out.print("Выберите номер города назначения: ");
+                        int toIndex = in.nextInt() - 1;
+                        System.out.print("Введите стоимость дороги: ");
+                        int cost = in.nextInt();
+
+                        if (fromIndex >= 0 && fromIndex < cities.size() && toIndex >= 0 && toIndex < cities.size()) {
+                            City fromCity = cities.get(fromIndex);
+                            City toCity = cities.get(toIndex);
+                            fromCity.addRoute(toCity, cost);
+                            System.out.println("Дорога добавлена: " + fromCity.getName() + " -> " + toCity.getName() + " за " + cost);
+                        } else {
+                            System.out.println("Неверный выбор городов.");
+                        }
+                    } catch (IllegalArgumentException e) {
+                        System.out.println("Ошибка: " + e.getMessage());
+                    } catch (Exception e) {
+                        System.out.println("Некорректный ввод. Попробуйте снова.");
+                        in.nextLine(); // Очистка буфера
+                    }
                     break;
+
+                case 3: // Удаление дороги
+                    if (cities.isEmpty()) {
+                        System.out.println("Список городов пуст. Сначала добавьте города.");
+                        break;
+                    }
+
+                    try {
+                        System.out.println("Доступные города:");
+                        for (int i = 0; i < cities.size(); i++) {
+                            System.out.println((i + 1) + ". " + cities.get(i).getName());
+                        }
+                        System.out.print("Выберите номер города отправления: ");
+                        int fromIndex = in.nextInt() - 1;
+                        System.out.print("Выберите номер города назначения: ");
+                        int toIndex = in.nextInt() - 1;
+
+                        if (fromIndex >= 0 && fromIndex < cities.size() && toIndex >= 0 && toIndex < cities.size()) {
+                            City fromCity = cities.get(fromIndex);
+                            City toCity = cities.get(toIndex);
+                            fromCity.removeRoute(toCity);
+                            System.out.println("Дорога удалена: " + fromCity.getName() + " -> " + toCity.getName());
+                        } else {
+                            System.out.println("Неверный выбор городов.");
+                        }
+                    } catch (IllegalArgumentException e) {
+                        System.out.println("Ошибка: " + e.getMessage());
+                    } catch (Exception e) {
+                        System.out.println("Некорректный ввод. Попробуйте снова.");
+                        in.nextLine(); // Очистка буфера
+                    }
+                    break;
+
+                case 4: // Показать города и дороги
+                    if (cities.isEmpty()) {
+                        System.out.println("Список городов пуст.");
+                    } else {
+                        System.out.println("\nСписок городов и дорог:");
+                        for (City city : cities) {
+                            System.out.println(city);
+                        }
+                    }
+                    break;
+
+                case 5: // Выход
+                    System.out.println("Выход из программы.");
+                    break;  // Выход из цикла, не завершает программу
+            }
+
+            // Проверка, если был выбран выход
+            if (act == 5) {
+                break;  // Выход из цикла while
             }
         }
 
@@ -210,7 +419,7 @@ public class Main {
                 while (true) {
                     if (in.hasNextInt()) {
                         nom1 = in.nextInt() - 1;
-                        if (nom1 < 0 || nom1 >= fractions.size()) {
+                        if (nom1 < 0 || nom1 >= fractions3.size()) {
                             System.out.println("Дроби с таким номером нет, введите снова");
                             continue;
                         }
@@ -232,7 +441,7 @@ public class Main {
                 while (true) {
                     if (in.hasNextInt()) {
                         nom2 = in.nextInt() - 1;
-                        if (nom2 < 0 || nom2 >= fractions.size()) {
+                        if (nom2 < 0 || nom2 >= fractions3.size()) {
                             System.out.println("Дроби с таким номером нет, введите снова");
                             continue;
                         }
@@ -341,7 +550,7 @@ public class Main {
                 while (true) {
                     if (in.hasNextInt()) {
                         n1 = in.nextInt() - 1;
-                        if (n1 < 0 || n1 >= fractions.size()) {
+                        if (n1 < 0 || n1 >= fractions4.size()) {
                             System.out.println("Дроби с таким номером нет, введите снова");
                             continue;
                         }
@@ -363,7 +572,7 @@ public class Main {
                 while (true) {
                     if (in.hasNextInt()) {
                         n2 = in.nextInt() - 1;
-                        if (n2 < 0 || n2 >= fractions.size()) {
+                        if (n2 < 0 || n2 >= fractions4.size()) {
                             System.out.println("Дроби с таким номером нет, введите снова");
                             continue;
                         }
@@ -437,7 +646,7 @@ public class Main {
                         String[] parts = numb.split("/");
                         int chisl = Integer.parseInt(parts[0]);
                         int znam = Integer.parseInt(parts[1]);
-                        Num m=new FracNum(chisl, znam);
+                        Num m = new FracNum(chisl, znam);
                         System.out.print("Введенное число:");
                         System.out.println(m);
                         numbers.add(m);
@@ -447,13 +656,13 @@ public class Main {
                     }
                 } else if (numb.contains(".")) {
                     double value = Double.parseDouble(numb);
-                    Num m2=new DoubNum(value);
+                    Num m2 = new DoubNum(value);
                     System.out.print("Введенное число:");
                     System.out.println(m2);
                     numbers.add(m2);
                 } else {
                     int value = Integer.parseInt(numb);
-                    Num m3=new IntNum(value);
+                    Num m3 = new IntNum(value);
                     System.out.print("Введенное число:");
                     System.out.println(m3);
                     numbers.add(m3);

@@ -6,24 +6,29 @@ public class City {
     private List<City> destinations;
     private List<Integer> costs;
 
-    String setName(){
-        this.name=name;
-        return this.name;
-    }
-    String getName() {
+    String setName(String name) {
+        this.name = name;
         return this.name;
     }
 
-    List<City> setDestinations(){
-        this.destinations=destinations;
+    String getName() {
+        return this.name;
+    }
+    List<City> setDestinations(List<City> destinations) {
+        if (destinations == null) {
+            throw new IllegalArgumentException("Список городов не может быть null");
+        }
+        this.destinations = destinations;
         return this.destinations;
     }
     List<City> getDestinations(){
         return this.destinations;
     }
-
-    List<Integer> setCosts(){
-        this.costs=costs;
+    List<Integer> setCosts(List<Integer> costs) {
+        if (costs == null) {
+            throw new IllegalArgumentException("Список стоимости дорог не может быть null");
+        }
+        this.costs = costs;
         return this.costs;
     }
     List<Integer> getCosts(){
@@ -36,7 +41,28 @@ public class City {
         this.costs = new ArrayList<>();
     }
 
+    City(String name, List<City> destinations, List<Integer> costs) {
+        this.name = name;
+        this.destinations = new ArrayList<>();
+        this.costs = new ArrayList<>();
+        if (destinations.size() == costs.size()) {
+            this.destinations.addAll(destinations);
+            this.costs.addAll(costs);
+        } else {
+            throw new IllegalArgumentException("Количество городов и стоимостей должно совпадать.");
+        }
+    }
+
     public void addRoute(City destination, int cost) {
+        if (destination == null) {
+            throw new IllegalArgumentException("Город назначения не может быть null.");
+        }
+        if (cost <= 0) {
+            throw new IllegalArgumentException("Стоимость дороги должна быть положительным числом.");
+        }
+        if (destination == this) {
+            throw new IllegalArgumentException("Нельзя добавить дорогу к самому себе.");
+        }
         // Проверка на существование пути к этому городу
         int index = destinations.indexOf(destination);
         if (index != -1) {
@@ -50,14 +76,23 @@ public class City {
     }
 
     public void removeRoute(City destination) {
+
+        if (destination == null) {
+            throw new IllegalArgumentException("Город назначения не может быть null.");
+        }
         int index = destinations.indexOf(destination);
         if (index != -1) {
             destinations.remove(index);
             costs.remove(index);
+        } else {
+            System.out.println("Дорога к городу " + destination.getName() + " не существует.");
         }
     }
 
     public String toString() {
+        if (destinations.isEmpty()) {
+            return "Из города " + name + " нет доступных дорог.";
+        }
         StringBuilder rez = new StringBuilder("Из города " + name + " можно попасть в города:" + "\n");
         for (int i = 0; i < destinations.size(); i++) {
             rez.append(destinations.get(i).getName()).append(" : ").append(costs.get(i)).append("\n");
