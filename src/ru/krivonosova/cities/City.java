@@ -13,7 +13,7 @@ public class City {
         return this.name;
     }
 
-    String getName() {
+    public String getName() {
         return this.name;
     }
     List<City> setDestinations(List<City> destinations) {
@@ -37,7 +37,7 @@ public class City {
         return this.costs;
     }
 
-    City(String name) {
+    public City(String name) {
         this.name = name;
         this.destinations = new ArrayList<>();
         this.costs = new ArrayList<>();
