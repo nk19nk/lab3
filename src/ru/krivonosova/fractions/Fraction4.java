@@ -1,3 +1,5 @@
+package ru.krivonosova.fractions;
+
 public final class Fraction4 extends Number {
     // Поля
     private final int chisl;
@@ -10,7 +12,7 @@ public final class Fraction4 extends Number {
         return this.znam;
     }
     // Конструктор
-    Fraction4(int chisl, int znam) {
+    public Fraction4(int chisl, int znam) {
         if (znam == 0) {
             throw new IllegalArgumentException("Знаменатель не может быть равен нулю");
         }

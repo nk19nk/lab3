@@ -1,3 +1,5 @@
+package ru.krivonosova.cities;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,7 +43,7 @@ public class City {
         this.costs = new ArrayList<>();
     }
 
-    City(String name, List<City> destinations, List<Integer> costs) {
+    public City(String name, List<City> destinations, List<Integer> costs) {
         this.name = name;
         this.destinations = new ArrayList<>();
         this.costs = new ArrayList<>();

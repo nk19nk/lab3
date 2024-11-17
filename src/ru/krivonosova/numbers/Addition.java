@@ -1,5 +1,7 @@
+package ru.krivonosova.numbers;
+import ru.krivonosova.main.Num;
+
 import java.util.List;
-import java.util.SequencedCollection;
 
 public class Addition {
     private List<Num> numbers;
@@ -13,7 +15,7 @@ public class Addition {
         return this.numbers;
     }
 
-    Addition(List<Num> numbers) {
+    public Addition(List<Num> numbers) {
         this.numbers = numbers;
     }
 

@@ -1,8 +1,11 @@
+package ru.krivonosova.numbers;
+import ru.krivonosova.main.Num;
+
 public class FracNum implements Num {
     private final int chisl;
     private final int znam;
 
-    FracNum(int chisl, int znam) {
+    public FracNum(int chisl, int znam) {
         if (znam==0) {
             throw new IllegalArgumentException("Знаменатель не может быть равен нулю");
         }
