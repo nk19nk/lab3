@@ -162,18 +162,18 @@ public class Main {
         System.out.println("Задание 1.10");
         List<City> cities = new ArrayList<>();
         while (true) {
+            System.out.println("0) Выход");
             System.out.println("1) Добавить город");
             System.out.println("2) Добавить дорогу");
             System.out.println("3) Удалить дорогу");
             System.out.println("4) Показать города и дороги");
-            System.out.println("5) Выход");
             System.out.println("Введите номер нужного действия: ");
 
             int act ;
             while (true) {
                 if (in.hasNextInt()) {
                     act = in.nextInt();
-                    if (act <= 0 || act >= 6) {
+                    if (act < 0 || act >= 5) {
                         System.out.println("Такого действия нет! Введите число от 1 до 5");
                     } else {
                         break;
@@ -343,8 +343,8 @@ public class Main {
                     }
                 }
             }
-            if (act == 5) {
-                break;  // Выход из цикла while
+            if (act == 0) {
+                break;
             }
         }
 //
