@@ -158,213 +158,195 @@ public class Main {
 //        }
 //
 //
-//        System.out.println("Задание 1.10");
-//        List<City> cities = new ArrayList<>();
-//        while (true) {
-//            System.out.println("Добавить город - 1");
-//            System.out.println("Добавить дорогу - 2");
-//            System.out.println("Удалить дорогу - 3");
-//            System.out.println("Показать города и дороги - 4");
-//            System.out.println("Выход - 5");
-//            System.out.print("Введите номер нужного действия: ");
-//
-//            int act ;
-//            while (true) {
-//                if (in.hasNextInt()) {
-//                    act = in.nextInt();
-//                    if (act <= 0 || act >= 6) {
-//                        System.out.println("Такого действия нет! Введите число от 1 до 5");
-//                    } else {
-//                        break;
-//                    }
-//                } else {
-//                    System.out.println("Введите целое число от 1 до 5!");
-//                    in.next();
-//                }
-//            }
-//
-//            if(act==1){
-//                System.out.println("Введите название города: ");
-//                String cityName = in.nextLine();
-//                try {
-//                    cities.add(new City(cityName));
-//                    System.out.println("Город " + cityName + " добавлен");
-//                } catch (IllegalArgumentException e) {
-//                    System.out.println("Ошибка: " + e.getMessage());
-//                }
-//            } else if(act==2){
-//                if (cities.isEmpty()) {
-//                    System.out.println("Список городов пуст. Сначала добавьте города.");
-//                    break;
-//                }
-//
-//                try {
-//                    System.out.println("Доступные города:");
-//                    for (int i = 0; i < cities.size(); i++) {
-//                        System.out.println((i + 1) + ". " + cities.get(i).getName());
-//                    }
-//                    System.out.print("Выберите номер города отправления: ");
-//                    int fromIndex = in.nextInt() - 1;
-//                    System.out.print("Выберите номер города назначения: ");
-//                    int toIndex = in.nextInt() - 1;
-//                    System.out.print("Введите стоимость дороги: ");
-//                    int cost = in.nextInt();
-//
-//                    if (fromIndex >= 0 && fromIndex < cities.size() && toIndex >= 0 && toIndex < cities.size()) {
-//                        ru.krivonosova.cities.City fromCity = cities.get(fromIndex);
-//                        ru.krivonosova.cities.City toCity = cities.get(toIndex);
-//                        fromCity.addRoute(toCity, cost);
-//                        System.out.println("Дорога добавлена: " + fromCity.getName() + " -> " + toCity.getName() + " за " + cost);
-//                    } else {
-//                        System.out.println("Неверный выбор городов.");
-//                    }
-//                } catch (IllegalArgumentException e) {
-//                    System.out.println("Ошибка: " + e.getMessage());
-//                } catch (Exception e) {
-//                    System.out.println("Некорректный ввод. Попробуйте снова.");
-//                    in.nextLine(); // Очистка буфера
-//                }
-//            } else if (act == 3) {
-//                if (cities.isEmpty()) {
-//                    System.out.println("Список городов пуст. Сначала добавьте города.");
-//                    break;
-//                }
-//
-//                try {
-//                    System.out.println("Доступные города:");
-//                    for (int i = 0; i < cities.size(); i++) {
-//                        System.out.println((i + 1) + ". " + cities.get(i).getName());
-//                    }
-//                    System.out.print("Выберите номер города отправления: ");
-//                    int fromIndex = in.nextInt() - 1;
-//                    System.out.print("Выберите номер города назначения: ");
-//                    int toIndex = in.nextInt() - 1;
-//
-//                    if (fromIndex >= 0 && fromIndex < cities.size() && toIndex >= 0 && toIndex < cities.size()) {
-//                        ru.krivonosova.cities.City fromCity = cities.get(fromIndex);
-//                        ru.krivonosova.cities.City toCity = cities.get(toIndex);
-//                        fromCity.removeRoute(toCity);
-//                        System.out.println("Дорога удалена: " + fromCity.getName() + " -> " + toCity.getName());
-//                    } else {
-//                        System.out.println("Неверный выбор городов.");
-//                    }
-//                } catch (IllegalArgumentException e) {
-//                    System.out.println("Ошибка: " + e.getMessage());
-//                } catch (Exception e) {
-//                    System.out.println("Некорректный ввод. Попробуйте снова.");
-//                    in.nextLine(); // Очистка буфера
-//                }
-//            } else if (act == 4) {
-//                if (cities.isEmpty()) {
-//                    System.out.println("Список городов пуст.");
-//                } else {
-//                    System.out.println("\nСписок городов и дорог:");
-//                    for (ru.krivonosova.cities.City city : cities) {
-//                        System.out.println(city);
-//                    }
-//                }
-//            }
-//
-//            switch (act) {
-//                case 1: // Добавление города
-//                    System.out.println("Введите название города: ");
-//                    String cityName = in.nextLine();
-//                    try {
-//                        ru.krivonosova.cities.City city = new ru.krivonosova.cities.City(cityName);
-//                        cities.add(city);
-//                        System.out.println("Город " + cityName + " добавлен");
-//                    } catch (IllegalArgumentException e) {
-//                        System.out.println("Ошибка: " + e.getMessage());
-//                    }
-//                    break;
-//
-//                case 2: // Добавление дороги
-//                    if (cities.size() < 2) {
-//                        System.out.println("Для добавления дороги необходимо иметь хотя бы два города.");
-//                        break;
-//                    }
-//
-//                    try {
-//                        System.out.println("Доступные города:");
-//                        for (int i = 0; i < cities.size(); i++) {
-//                            System.out.println((i + 1) + ". " + cities.get(i).getName());
-//                        }
-//                        System.out.print("Выберите номер города отправления: ");
-//                        int fromIndex = in.nextInt() - 1;
-//                        System.out.print("Выберите номер города назначения: ");
-//                        int toIndex = in.nextInt() - 1;
-//                        System.out.print("Введите стоимость дороги: ");
-//                        int cost = in.nextInt();
-//
-//                        if (fromIndex >= 0 && fromIndex < cities.size() && toIndex >= 0 && toIndex < cities.size()) {
-//                            ru.krivonosova.cities.City fromCity = cities.get(fromIndex);
-//                            ru.krivonosova.cities.City toCity = cities.get(toIndex);
-//                            fromCity.addRoute(toCity, cost);
-//                            System.out.println("Дорога добавлена: " + fromCity.getName() + " -> " + toCity.getName() + " за " + cost);
-//                        } else {
-//                            System.out.println("Неверный выбор городов.");
-//                        }
-//                    } catch (IllegalArgumentException e) {
-//                        System.out.println("Ошибка: " + e.getMessage());
-//                    } catch (Exception e) {
-//                        System.out.println("Некорректный ввод. Попробуйте снова.");
-//                        in.nextLine(); // Очистка буфера
-//                    }
-//                    break;
-//
-//                case 3: // Удаление дороги
-//                    if (cities.isEmpty()) {
-//                        System.out.println("Список городов пуст. Сначала добавьте города.");
-//                        break;
-//                    }
-//
-//                    try {
-//                        System.out.println("Доступные города:");
-//                        for (int i = 0; i < cities.size(); i++) {
-//                            System.out.println((i + 1) + ". " + cities.get(i).getName());
-//                        }
-//                        System.out.print("Выберите номер города отправления: ");
-//                        int fromIndex = in.nextInt() - 1;
-//                        System.out.print("Выберите номер города назначения: ");
-//                        int toIndex = in.nextInt() - 1;
-//
-//                        if (fromIndex >= 0 && fromIndex < cities.size() && toIndex >= 0 && toIndex < cities.size()) {
-//                            ru.krivonosova.cities.City fromCity = cities.get(fromIndex);
-//                            ru.krivonosova.cities.City toCity = cities.get(toIndex);
-//                            fromCity.removeRoute(toCity);
-//                            System.out.println("Дорога удалена: " + fromCity.getName() + " -> " + toCity.getName());
-//                        } else {
-//                            System.out.println("Неверный выбор городов.");
-//                        }
-//                    } catch (IllegalArgumentException e) {
-//                        System.out.println("Ошибка: " + e.getMessage());
-//                    } catch (Exception e) {
-//                        System.out.println("Некорректный ввод. Попробуйте снова.");
-//                        in.nextLine(); // Очистка буфера
-//                    }
-//                    break;
-//
-//                case 4: // Показать города и дороги
-//                    if (cities.isEmpty()) {
-//                        System.out.println("Список городов пуст.");
-//                    } else {
-//                        System.out.println("\nСписок городов и дорог:");
-//                        for (ru.krivonosova.cities.City city : cities) {
-//                            System.out.println(city);
-//                        }
-//                    }
-//                    break;
-//
-//                case 5: // Выход
-//                    System.out.println("Выход из программы.");
-//                    break;  // Выход из цикла, не завершает программу
-//            }
-//
-//            // Проверка, если был выбран выход
-//            if (act == 5) {
-//                break;  // Выход из цикла while
-//            }
-//        }
+
+        System.out.println("Задание 1.10");
+        List<City> cities = new ArrayList<>();
+        while (true) {
+            System.out.println("1) Добавить город");
+            System.out.println("2) Добавить дорогу");
+            System.out.println("3) Удалить дорогу");
+            System.out.println("4) Показать города и дороги");
+            System.out.println("5) Выход");
+            System.out.println("Введите номер нужного действия: ");
+
+            int act ;
+            while (true) {
+                if (in.hasNextInt()) {
+                    act = in.nextInt();
+                    if (act <= 0 || act >= 6) {
+                        System.out.println("Такого действия нет! Введите число от 1 до 5");
+                    } else {
+                        break;
+                    }
+                } else {
+                    System.out.println("Введите целое число от 1 до 5!");
+                    in.next();
+                }
+            }
+            in.nextLine();
+
+            if(act == 1){
+                System.out.println("Введите название города: ");
+                String cityName = in.nextLine();
+                try {
+                    City c = new City(cityName);
+                    cities.add(c);
+                    System.out.println("Город добавлен");
+                } catch (IllegalArgumentException e) {
+                    System.out.println("Ошибка: " + e.getMessage());
+                }
+            }
+
+            else if(act == 2){
+                if (cities.isEmpty()) {
+                    System.out.println("Список городов пуст");
+                    continue;
+                }
+                System.out.println("Доступные города:");
+                for (int i = 0; i < cities.size(); i++) {
+                    System.out.println((i + 1) + ". " + cities.get(i).getName());
+                }
+                try {
+                    System.out.println("Введите номер города отправления: ");
+                    int fromIndex;
+                    while (true) {
+                        if (in.hasNextInt()) {
+                            fromIndex = in.nextInt()-1;
+                            if (fromIndex < 0 || fromIndex >= cities.size()) {
+                                System.out.println("Города с таким номером нет, введите снова!");
+                            } else {
+                                break;
+                            }
+                        } else {
+                            System.out.println("Введите целое число!");
+                            in.next();
+                        }
+                    }
+                    City fromCity = cities.get(fromIndex);
+                    in.nextLine();
+
+                    System.out.println("Введите номер города назначения: ");
+                    int toIndex;
+                    while (true) {
+                        if (in.hasNextInt()) {
+                            toIndex = in.nextInt()-1;
+                            if (toIndex < 0 || toIndex >= cities.size()) {
+                                System.out.println("Города с таким номером нет, введите снова!");
+                            } else {
+                                break;
+                            }
+                        } else {
+                            System.out.println("Введите целое число!");
+                            in.next();
+                        }
+                    }
+                    City toCity = cities.get(toIndex);
+                    in.nextLine();
+
+                    System.out.println("Введите стоимость дороги: ");
+                    int cost;
+                    while (true) {
+                        if (in.hasNextInt()) {
+                            cost = in.nextInt();
+                            if (cost <= 0 ) {
+                                System.out.println("Введите положительное число!");
+                            } else {
+                                break;
+                            }
+                        } else {
+                            System.out.println("Введите целое число!");
+                            in.next();
+                        }
+                    }
+                    fromCity.addRoute(toCity, cost);
+                    in.nextLine();
+                    System.out.println("Дорога из города " + fromCity.getName() + " в город " + toCity.getName() + " добавлена за " + cost);
+                } catch (IllegalArgumentException e) {
+                    in.nextLine();
+                    System.out.println("Ошибка: " + e.getMessage());
+                } catch (Exception e) {
+                    System.out.println("Некорректный ввод. Попробуйте снова.");
+                    in.nextLine(); // Очистка буфера
+                }
+            }
+
+            else if (act == 3) {
+                if (cities.isEmpty()) {
+                    System.out.println("Список городов пуст");
+                    continue;
+                }
+
+                try {
+
+                    System.out.println("Список городов и дорог:");
+                    for (City city : cities) {
+                        System.out.println(city);
+                    }
+                    System.out.println("Доступные города:");
+                    for (int i = 0; i < cities.size(); i++) {
+                        System.out.println((i + 1) + ". " + cities.get(i).getName());
+                    }
+                    System.out.println("Введите номер города отправления: ");
+                    int fromIndex;
+                    while (true) {
+                        if (in.hasNextInt()) {
+                            fromIndex = in.nextInt()-1;
+                            if (fromIndex < 0 || fromIndex >= cities.size()) {
+                                System.out.println("Города с таким номером нет, введите снова!");
+                            } else {
+                                break;
+                            }
+                        } else {
+                            System.out.println("Введите целое число!");
+                            in.next();
+                        }
+                    }
+                    City fromCity = cities.get(fromIndex);
+                    in.nextLine();
+
+                    System.out.println("Введите номер города назначения: ");
+                    int toIndex;
+                    while (true) {
+                        if (in.hasNextInt()) {
+                            toIndex = in.nextInt()-1;
+                            if (toIndex < 0 || toIndex >= cities.size()) {
+                                System.out.println("Города с таким номером нет, введите снова!");
+                            } else {
+                                break;
+                            }
+                        } else {
+                            System.out.println("Введите целое число!");
+                            in.next();
+                        }
+                    }
+                    City toCity = cities.get(toIndex);
+                    fromCity.removeRoute(toCity);
+                    System.out.println("Дорога из города " + fromCity.getName() + " в город " + toCity.getName() + " удалена");
+                    in.nextLine();
+
+                } catch (IllegalArgumentException e) {
+                    in.nextLine();
+                    System.out.println("Ошибка: " + e.getMessage());
+                } catch (Exception e) {
+                    System.out.println("Некорректный ввод. Попробуйте снова.");
+                    in.nextLine(); // Очистка буфера
+                }
+            }
+
+            else if (act == 4) {
+                if (cities.isEmpty()) {
+                    System.out.println("Список городов пуст");
+                } else {
+                    System.out.println("Список городов и дорог:");
+                    for (City city : cities) {
+                        System.out.println(city);
+                    }
+                }
+            }
+            if (act == 5) {
+                break;  // Выход из цикла while
+            }
+        }
 //
 //
 //        System.out.println("Задание 3.1");

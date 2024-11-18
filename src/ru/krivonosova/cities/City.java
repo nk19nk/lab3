@@ -92,12 +92,16 @@ public class City {
     }
 
     public String toString() {
+        StringBuilder rez = new StringBuilder();
+        rez.append("Из города ").append(name);
+
         if (destinations.isEmpty()) {
-            return "Из города " + name + " нет доступных дорог.";
-        }
-        StringBuilder rez = new StringBuilder("Из города " + name + " можно попасть в города:" + "\n");
-        for (int i = 0; i < destinations.size(); i++) {
-            rez.append(destinations.get(i).getName()).append(" : ").append(costs.get(i)).append("\n");
+            rez.append(" нет доступных дорог\n");
+        } else {
+            rez.append(" есть дороги в города\n");
+            for (int i = 0; i < destinations.size(); i++) {
+                rez.append(" ").append(destinations.get(i).getName()).append(" за ").append(costs.get(i)).append("\n");
+            }
         }
         return rez.toString();
     }
