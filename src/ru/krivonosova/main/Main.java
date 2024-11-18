@@ -1,15 +1,12 @@
 package ru.krivonosova.main;
 
-import ru.krivonosova.numbers.Addition;
-import ru.krivonosova.numbers.DoubNum;
-import ru.krivonosova.numbers.FracNum;
-import ru.krivonosova.numbers.IntNum;
-
+import ru.krivonosova.numbers.*;
 import ru.krivonosova.fractions.*;
 import ru.krivonosova.cities.*;
 import ru.krivonosova.geometry.*;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -64,11 +61,11 @@ public class Main {
 //        }
 //        while (true) {
 //            System.out.println("Выберите операцию:");
-//            System.out.println("Сложение - 1");
-//            System.out.println("Вычитание - 2");
-//            System.out.println("Умножение - 3");
-//            System.out.println("Деление - 4");
-//            System.out.println("Выход - 0");
+//            System.out.println("0) Выход");
+//            System.out.println("1) Сложение");
+//            System.out.println("2) Вычитание");
+//            System.out.println("3) Умножение");
+//            System.out.println("4) Деление");
 //            System.out.print("Введите номер операции: ");
 //            int oper = 0;
 //            while (true) {
@@ -404,11 +401,11 @@ public class Main {
 //        }
 //        while (true) {
 //            System.out.println("Выберите операцию:");
-//            System.out.println("Сложение - 1");
-//            System.out.println("Вычитание - 2");
-//            System.out.println("Умножение - 3");
-//            System.out.println("Деление - 4");
-//            System.out.println("Выход - 0");
+//            System.out.println("0) Выход");
+//            System.out.println("1) Сложение");
+//            System.out.println("2) Вычитание");
+//            System.out.println("3) Умножение");
+//            System.out.println("4) Деление");
 //            System.out.println("Введите номер операции: ");
 //            int oper3 = 0;
 //            while (true) {
@@ -535,11 +532,11 @@ public class Main {
 //        }
 //        while (true) {
 //            System.out.println("Выберите операцию:");
-//            System.out.println("Сложение - 1");
-//            System.out.println("Вычитание - 2");
-//            System.out.println("Умножение - 3");
-//            System.out.println("Деление - 4");
-//            System.out.println("Выход - 0");
+//            System.out.println("0) Выход");
+//            System.out.println("1) Сложение");
+//            System.out.println("2) Вычитание");
+//            System.out.println("3) Умножение");
+//            System.out.println("4) Деление");
 //            System.out.print("Введите номер операции: ");
 //            int oper4 = 0;
 //            while (true) {
@@ -698,8 +695,22 @@ public class Main {
 //        }
 //        Addition s = new Addition(numbers);
 //        System.out.println("Сумма введенных чисел: " + s.summa());
+//
+//
+//        System.out.println("Задание 7.3");
+//        System.out.println("Введите число X: ");
+//        String x = in.nextLine().trim();
+//        System.out.println("Введите число Y: ");
+//        String y = in.nextLine().trim();
+//        double res = exp(x, y);
+//        if (!Double.isNaN(res)) {
+//            System.out.println("Результат возведения " + x + " в степень " + y + " равен: " + res);
+//        } else {
+//            System.out.println("Нельзя выполнить возведение в степень");
+//        }
 
-        System.out.println("Задача 8.4");
+
+        System.out.println("Задание 8.4");
         List<Point> points = new ArrayList<>();
         System.out.println("Сколько точек вы хотите создать?");
         int count8 = 0;
@@ -717,11 +728,21 @@ public class Main {
             }
         }
         for (int i = 0; i < count8; i++) {
-            System.out.println("Введите координаты " + (i + 1) + " точки");
-            System.out.println("координата х: ");
-            double x = in.nextDouble();
-            System.out.println("координата у: ");
-            double y = in.nextDouble();
+            double x = 0;
+            double y = 0;
+            while (true) {
+                try {
+                    System.out.println("Введите координаты " + (i + 1) + " точки");
+                    System.out.println("Координата х: ");
+                    x = in.nextDouble();
+                    System.out.println("Координата у: ");
+                    y = in.nextDouble();
+                    break;
+                } catch (InputMismatchException e) {
+                    System.out.println("Введите целое число или дробное (нпр, 1,2)");
+                    in.next();
+                }
+            }
             Point point = new Point(x, y);
             points.add(point);
         }
@@ -731,7 +752,7 @@ public class Main {
         }
         // Выбор точек для сравнения
         if (points.size() > 1) {
-            System.out.print("Введите номер первой точки для сравнения (1 - " + points.size() + "): ");
+            System.out.println("Введите номер первой точки для сравнения (1 - " + points.size() + "): ");
             int nomerone = 0;
             while (true) {
                 if (in.hasNextInt()) {
@@ -747,7 +768,7 @@ public class Main {
                 }
             }
             Point point1 = points.get(nomerone);
-            System.out.print("Введите номер второй точки для сравнения (1 - " + points.size() + "): ");
+            System.out.println("Введите номер второй точки для сравнения (1 - " + points.size() + "): ");
             int nomertwo = 0;
             while (true) {
                 if (in.hasNextInt()) {
@@ -763,49 +784,36 @@ public class Main {
                 }
             }
             Point point2 = points.get(nomertwo);
-
             if (point1.equals(point2)) {
-                System.out.println("Точки " + (nomerone + 1) + " и " + (nomertwo + 1) + " равны");
+                System.out.println("Точки " + point1 + " и " + point2 + " одинаковые");
             } else {
-                System.out.println("Точки " + (nomerone + 1) + " и " + (nomertwo + 1) + " не равны");
+                System.out.println("Точки " + point1 + " и " + point2 + " не одинаковые");
             }
-        }
 
-        System.out.print("Введите номер точки для клонирования (1 - " + points.size() + "): ");
-        int nomer8 = 0;
-        while (true) {
-            if (in.hasNextInt()) {
-                nomer8 = in.nextInt() - 1;
-                if (nomer8 < 0 || nomer8 >= points.size()) {
-                    System.out.println("Точки с таким номером нет, введите снова");
-                    continue;
+            System.out.println("Введите номер точки для клонирования (1 - " + points.size() + "): ");
+            int nomer8 = 0;
+            while (true) {
+                if (in.hasNextInt()) {
+                    nomer8 = in.nextInt() - 1;
+                    if (nomer8 < 0 || nomer8 >= points.size()) {
+                        System.out.println("Точки с таким номером нет, введите снова");
+                        continue;
+                    }
+                    break;
+                } else {
+                    System.out.println("Введите целое число!");
+                    in.next();
                 }
-                break;
-            } else {
-                System.out.println("Введите целое число!");
-                in.next();
             }
-        }
-        //Point point3 = points.get(nomer8);
-        Point clonedPoint = points.get(nomer8).clone();
-        System.out.println("Клонированная точка " + (nomer8 + 1) + ": " + clonedPoint);
-
-
-
-
-        System.out.println("Задание 7.3");
-        System.out.println("Введите число X: ");
-        String x = in.nextLine().trim();
-        System.out.println("Введите число Y: ");
-        String y = in.nextLine().trim();
-        double res = exp(x, y);
-        if (!Double.isNaN(res)) {
-            System.out.println("Результат возведения " + x + " в степень " + y + " равен: " + res);
+            Point point3 = points.get(nomer8);
+            Point clonedpoint = point3.clone();
+            System.out.println("Клонированная точка " + ": " + clonedpoint);
         } else {
-            System.out.println("Нельзя выполнить возведение в степень");
+            System.out.println("Недостаточно точек для сравнения, поэтому можно только клонировать введенную точку");
+            Point point4 = points.get(0);
+            Point clonedpoint2 = point4.clone();
+            System.out.println("Клонированная точка " + ": " + clonedpoint2);
         }
-
-
         in.close();
     }
 }
